@@ -1,0 +1,109 @@
+
+
+.slide1{
+     display: flex;
+    /* Assure que le conteneur prend toute la largeur disponible */
+    width: 100%; 
+    /* Définit une hauteur minimale pour la section d'introduction */
+    min-height: 80vh; 
+    /* Aligne les éléments verticalement (texte et image) */
+    align-items: stretch; 
+}
+
+/* 1. Section Texte (Côté Gauche) */
+.hero1 {
+    /* Prend 50% de la largeur du conteneur */
+    flex: 1; 
+    padding: 80px 5%; /* Espace intérieur pour centrer le contenu */
+    display: flex;
+    flex-direction: column;
+    /* Centre le contenu verticalement dans sa moitié */
+    justify-content: center; 
+    /* Couleur de fond très légèrement grise */
+    background-color: #fcfcfc; 
+}
+
+/* Titre (H1) */
+.hero1 h1 {
+    font-size: 3.5rem; /* Grande taille pour le titre */
+    font-weight: 800; /* Gras et lourd */
+    line-height: 1.1; /* Ligne plus courte pour un impact maximal */
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Paragraphe (P) */
+.hero1 p {
+    font-size: 1.15rem;
+    color: #555;
+    line-height: 1.5;
+    max-width: 450px; /* Limite la largeur du texte pour la lisibilité */
+    margin-bottom: 30px;
+}
+
+/* Bouton "Create Account" */
+.hero1 button {
+    /* Bouton rectangulaire, couleur orange vif */
+    background-color: #ff6e40; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 200px; /* Taille fixe pour l'alignement */
+    transition: background-color 0.3s ease;
+}
+
+.hero1 button:hover {
+    background-color: #e55c32; /* Assombrir au survol */
+}
+
+/* 2. Section Image (Côté Droit) */
+.hero2 {
+    /* Prend 50% de la largeur du conteneur */
+    flex: 1; 
+    /* Assure que l'image est alignée au conteneur */
+    display: flex; 
+    /* La couleur blanche à droite du conteneur permet de cacher la bordure */
+}
+
+/* Assure que l'image remplit son conteneur */
+.hero2 img {
+    /* L'objet-fit 'cover' est essentiel pour que l'image remplisse l'espace
+       sans être déformée, coupant les bords si nécessaire */
+    object-fit: cover; 
+    /* Fait en sorte que l'image prenne 100% de la hauteur/largeur du hero2 */
+    width: 100%; 
+    height: 100%;
+}
+
+/* --- Media Query pour la Réponse Mobile --- */
+@media (max-width: 900px) {
+    .container {
+        /* Empile les deux sections verticalement */
+        flex-direction: column; 
+    }
+
+    .hero1, .hero2 {
+        /* Prend la pleine largeur en mode empilé */
+        width: 100%; 
+        min-height: auto;
+    }
+    
+    .hero1 {
+        padding: 40px 5%;
+        text-align: center;
+        align-items: center; /* Centre les éléments de texte */
+    }
+
+    .hero1 h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero2 {
+        /* Donne une hauteur fixe à l'image sur mobile */
+        height: 300px; 
+    }
+}

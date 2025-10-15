@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "../../styles/components/Header.module.css"; 
 import { Search, Bell, ShoppingCart } from 'lucide-react'; 
+import Image from 'next/image';
 
 
 export function Header() {
@@ -9,9 +10,15 @@ export function Header() {
         <header className={styles.header}>
             <div className={styles.leftSection}>
                 {/* 1. Logo */}
-                <div className={styles.logo}>
-                  <img src={require("../../assets/logo/2.png")}  />
-                </div>
+                                <div className={styles.logo}>
+                                    <Image
+                                        src={require("../../assets/logo/5.png")}
+                                        alt=" "
+                                        width={100}
+                                        height={110}
+                                        priority={true}
+                                    />
+                                </div>
 
                 {/* 2. Bouton Catégories / Parcourir */}
                 <div className={styles.browseButton}>
