@@ -1,0 +1,129 @@
+/* Conteneur principal */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px; /* Espacement intérieur */
+    border-bottom: 1px solid #eee;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Légère ombre */
+}
+
+/* 1. Logo et Section Gauche */
+.leftSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Bouton Parcourir */
+.browseButton {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 4px;
+    background-color: #f7f7f7; /* Couleur de fond pâle */
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.arrowDown {
+    margin-left: 5px;
+    font-size: 0.7rem;
+}
+
+/* 2. Barre de Recherche */
+.searchContainer {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Permet à la barre de recherche d'occuper l'espace central */
+    max-width: 500px; /* Limite la largeur */
+    margin: 0 40px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0 10px;
+    transition: border-color 0.2s;
+}
+
+.searchContainer:focus-within {
+    border-color: #008080; /* Accentuation au focus */
+}
+
+.searchIcon {
+    margin-right: 8px;
+    font-size: 1rem;
+    color: #888;
+}
+
+.searchInput {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 0;
+    font-size: 1rem;
+    outline: none; /* Supprime le contour par défaut lors du focus */
+}
+
+/* 3. Section Droite */
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    color: #555;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.iconButton:hover {
+    color: #333;
+}
+
+/* Boutons d'Action */
+.createAccountButton {
+    background-color: #ffe4d7; /* Couleur pâle et chaude (orange clair) */
+    color: #e54c1e; /* Texte orange foncé */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.createAccountButton:hover {
+    background-color: #ffc9b0;
+}
+
+.signInButton {
+    background-color: #e54c1e; /* Couleur orange/rouge vive */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.signInButton:hover {
+    background-color: #d1441a;
+}
