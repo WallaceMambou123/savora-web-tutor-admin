@@ -1,33 +1,84 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* src/app/globals.css (Version Thémée) */
+@import "tailwindcss";
+
+/* ------------------ Fonts ------------------ */
+@font-face {
+  font-family: Inter;
+  src: url("../assets/fonts/inter/Inter-Regular.otf");
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("../assets/fonts/Montserrat/static/Montserrat-Black.ttf");
 }
 
-@media (prefers-color-scheme: dark) {
+/* ------------------ Variables par défaut ------------------ */
+@theme {
+  --color-savoora-primary: #F57638;
+  --color-savoora-dark: #13131D;
+  --color-savoora-accent: #52a595;
+  --color-savoora-light: #e6e6e6;
+  --color-savoora-muted: #a8a8a8;
+  --color-savoora-success: #10B981;
+  --color-savoora-danger: #EF4444;
+  --color-savoora-warning: #F59E0B;
+  --font-sans: Inter;
+  --font-display: Montserrat;
+}
+
+/* ------------------ Thèmes (base & sombre) ------------------ */
+@layer base {
+  /* 🌞 Thème clair (valeurs par défaut) */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-bg: #ffffff;
+    --color-text: #13131D;
+    --color-savoora-primary: #F57638;
+    --color-savoora-accent: #52a595;
+    --color-savoora-light: #e6e6e6;
+    --color-savoora-muted: #a8a8a8;
+    --color-savoora-success: #10B981;
+    --color-savoora-danger: #EF4444;
+    --color-savoora-warning: #F59E0B;
+    --font-sans: Inter, system-ui, sans-serif;
+    --font-display: Montserrat, sans-serif;
+  }
+
+  /* 🌚 Thème sombre (activé via .dark sur html) */
+  .dark {
+    --color-bg: #13131D;
+    --color-text: #e6e6e6;
+    --color-savoora-primary: #F57638;
+    --color-savoora-accent: #52a595;
+    --color-savoora-light: #1e1e2d;
+    --color-savoora-muted: #7a7a7a;
+    --color-savoora-success: #10B981;
+    --color-savoora-danger: #EF4444;
+    --color-savoora-warning: #F59E0B;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
+/* ------------------ Reset & utilitaires ------------------ */
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+
 }
 
 a {
@@ -35,6 +86,7 @@ a {
   text-decoration: none;
 }
 
+/* Optionnel : Support pour systèmes en mode sombre auto */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
