@@ -189,7 +189,6 @@ export default function Footer() {
           >
             <option>English</option>
             <option>French</option>
-            <option>Spanish</option>
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-300">
             <svg

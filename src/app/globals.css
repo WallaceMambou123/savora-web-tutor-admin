@@ -7,6 +7,10 @@
   src: url("../assets/fonts/inter/Inter-Regular.otf");
 }
 @font-face {
+  font-family: Inter-Bold;
+  src: url("../assets/fonts/inter/Inter-Bold.otf");
+}
+@font-face {
   font-family: Montserrat;
   src: url("../assets/fonts/Montserrat/static/Montserrat-Black.ttf");
 }
@@ -84,6 +88,16 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+h1{
+  font-size: 50px;
+  font-family: 'Inter-Bold';
+}
+
+h2{
+  font-size: 40px;
+  font-family: 'Inter';
 }
 
 /* Optionnel : Support pour systèmes en mode sombre auto */

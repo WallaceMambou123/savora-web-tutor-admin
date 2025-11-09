@@ -2,17 +2,27 @@
 
 import React from "react";
 import { useState } from 'react';
-import { Search, Bell, ShoppingCart, ChevronDown } from "lucide-react";
+import { Search, Bell, ShoppingCart, ChevronDown, Heart } from "lucide-react";
 import Image from "next/image";
 import ThemeSwitcher from "../ThemeSwitcher";
 import Link from "next/link";
+
 export default function Header() {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
+    
+    const navLinks = [
+        { name: "Home", href: "/" },
+        { name: "Courses", href: "/courses" },
+        { name: "About", href: "/about" },
+        { name: "Contact", href: "/contact" },
+        { name: "Become an Instructor", href: "/instructor" },
+    ];
+
     return (
         <header
             className="
         flex items-center justify-between 
-        p-3
+        px-6 py-4
         border-b border-savoora-light 
         bg-[var(--color-bg)] 
         text-[var(--color-text)] 
@@ -21,32 +31,41 @@ export default function Header() {
       "
         >
             {/* ----------------- LEFT SECTION ----------------- */}
-            <div className="flex items-center gap-4 sm:gap-6">
+            <div className="flex items-center gap-8">
                 {/* Logo */}
-                <div className="flex items-center gap-6">
-                    {/* Logo avec animation */}
-                    <Link
-                        href="/"
-                        className="flex items-center transform hover:scale-105 transition-transform duration-300"
-                    >
-                        <Image
-                            src={require("../../assets/logo/6.png")}
-                            alt="Savoora Logo"
-                            width={160}
-                            height={160}
-                            priority
-                            className="h-15 w-auto object-contain"
-                        />
-                    </Link>
-                </div>
+                <Link
+                    href="/"
+                    className="flex items-center transform hover:scale-105 transition-transform duration-300"
+                >
+                    <Image
+                        src={require("../../assets/logo/6.png")}
+                        alt="Savoora Logo"
+                        width={160}
+                        height={160}
+                        priority
+                        className="h-12 w-auto object-contain"
+                    />
+                </Link>
 
+                {/* Navigation Links */}
+                <nav className="hidden lg:flex items-center gap-6">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            className="text-sm font-medium text-[var(--color-text)] hover:text-savoora-primary transition-colors"
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                </nav>
             </div>
 
             {/* ----------------- SEARCH BAR ----------------- */}
             <div
                 className={`
-                    hidden lg:flex items-center flex-grow max-w-2xl mx-1
-                    border-2  p-3 rounded-full
+                    hidden lg:flex items-center flex-grow max-w-2xl mx-4
+                    border-2 p-3 rounded-full
                     transition-all duration-300 ease-out
                     ${isSearchFocused
                         ? 'border-savoora-primary shadow-lg shadow-savoora-primary/20 scale-105'
@@ -63,7 +82,7 @@ export default function Header() {
                 />
                 <input
                     type="text"
-                    placeholder="What do you want to learn today?"
+                    placeholder="What do you want to learn..."
                     onFocus={() => setIsSearchFocused(true)}
                     onBlur={() => setIsSearchFocused(false)}
                     className="
@@ -85,21 +104,31 @@ export default function Header() {
               p-2 rounded-md 
               text-savoora-muted 
               hover:text-[var(--color-text)]
-              transition-colors
+              transition-colors relative
             "
                     >
-                        <Bell className="group-hover:animate-[wiggle_0.5s_ease-in-out]" size={20} />
-                        <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[var(--color-savoora-danger)] rounded-full animate-pulse"></span>
+                        <Heart size={20} />
                     </button>
                     <button
                         className="
               p-2 rounded-md 
               text-savoora-muted 
               hover:text-[var(--color-text)]
-              transition-colors
+              transition-colors relative
             "
                     >
                         <ShoppingCart size={20} />
+                    </button>
+                    <button
+                        className="
+              p-2 rounded-md 
+              text-savoora-muted 
+              hover:text-[var(--color-text)]
+              transition-colors relative
+            "
+                    >
+                        <Bell size={20} />
+                        <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[var(--color-savoora-danger)] rounded-full animate-pulse"></span>
                     </button>
                 </div>
 
@@ -108,16 +137,15 @@ export default function Header() {
                     <Link href="/register">
                         <button
                             className="
-                            bg-savoora-primary/50
+                            bg-white
                             text-savoora-primary
-                            dark:bg-savoora-primary/20
-                            dark:text-savoora-primary
+                            border border-savoora-primary
                               px-4 py-2 rounded-md font-semibold text-sm
                             hover:bg-savoora-light/70
                               transition-colors
                             "
                         >
-                            Créer mon Compte
+                            Create Account
                         </button>
                     </Link>
                     <Link href="/login">
@@ -130,12 +158,24 @@ export default function Header() {
                           transition-colors
                         "
                         >
-                            Me Connecter
+                            Sign In
                         </button>
                     </Link>
-
-                    <ThemeSwitcher />
                 </div>
+
+                {/* Sélecteurs Langue/Devise */}
+                <div className="hidden md:flex items-center gap-2">
+                    <select className="bg-transparent border-none text-sm text-[var(--color-text)] cursor-pointer focus:outline-none">
+                        <option>USD</option>
+                        <option>EUR</option>
+                    </select>
+                    <select className="bg-transparent border-none text-sm text-[var(--color-text)] cursor-pointer focus:outline-none">
+                        <option>English</option>
+                        <option>Français</option>
+                    </select>
+                </div>
+
+                <ThemeSwitcher />
             </div>
         </header>
     );

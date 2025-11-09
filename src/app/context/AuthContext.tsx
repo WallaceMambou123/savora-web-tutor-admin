@@ -82,8 +82,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = async (credentials: any) => {
     setIsLoading(true);
     try {
-      // Étape 1: Obtenir les tokens
-      const tokenResponse = await axios.post(`${API_BASE_URL}/token/`, credentials);
+      // Étape 1: Obtenir les tokens - convertir email en login
+      const loginCredentials = credentials.email 
+        ? { login: credentials.email, password: credentials.password }
+        : { login: credentials.username, password: credentials.password };
+      const tokenResponse = await axios.post(`${API_BASE_URL}/token/`, loginCredentials);
       const { access, refresh } = tokenResponse.data;
 
       Cookies.set('access_token', access, { expires: 1/24, secure: process.env.NODE_ENV === 'production' }); 
